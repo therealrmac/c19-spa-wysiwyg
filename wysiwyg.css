@@ -4,3 +4,9 @@
 .odd{
 	background-color: lightblue;
 }
+.image{
+	width: 60%;
+}
+.dotted{
+	border: 2px dotted red;
+}
