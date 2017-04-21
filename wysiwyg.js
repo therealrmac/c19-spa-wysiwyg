@@ -26,32 +26,39 @@ var output= document.getElementById('output');
 var containerPerson= document.getElementsByClassName('person');
 var personName= document.getElementsByClassName('name');
 var person= document.getElementsByClassName('famousPerson')
+var contain= document.getElementById('container');
 
 var counter=0;
 for (;counter<5;counter++){
-	output.innerHTML= `<div class="person" id="person--${counter}"></div>`;
+  output.innerHTML= `<div class="person" id="person--${counter}"></div>`;
 }
 
 
 for (var i=0; i< famousPeople.length; i++){
-	containerPerson= `	<div class="famousPerson">
-	  	<h1 class="odd name">${famousPeople[i].name}</h1><h2 class="title even"> ${famousPeople[i].title}</h2>
-	  	<section class="odd bio">${famousPeople[i].bio}</section>
-	  	<img src="${famousPeople[i].image}" class="image even" alt="image of ${famousPeople[i].image}"> 
-	  	<footer id="lifespan" class="even">${famousPeople[i].lifespan.birth}-${famousPeople[i].lifespan.death}</footer>
-	</div>`;
-	output.innerHTML +=containerPerson;
+  containerPerson= `  <div class="famousPerson">
+      <h1 class="odd name">${famousPeople[i].name}</h1><h2 class="title even"> ${famousPeople[i].title}</h2>
+      <section class="odd bio">${famousPeople[i].bio}</section>
+      <img src="${famousPeople[i].image}" class="image even" alt="image of ${famousPeople[i].image}"> 
+      <footer id="lifespan" class="even">${famousPeople[i].lifespan.birth}-${famousPeople[i].lifespan.death}</footer>
+  </div>`;
+  output.innerHTML +=containerPerson;
 }
+var highlight="";
 for (var i=0; i<person.length; i++){
-	person[i].addEventListener('click', function(event){
-		event.target.classList.toggle('dotted');
-		input.focus();
-	});
+  person[i].addEventListener('click', function(event){
+    event.target.closest("div").classList.toggle('dotted');
+    input.focus();
+    highlight=event.target.closest("div").querySelector(".bio");
+    console.log(highlight);
+    input.addEventListener('keyup', function(event){
+    	highlight.innerHTML= event.target.value;
+    	 if(event.keyCode ===13){
+            highlight= input
+            input.value= "";
+      }   
+    });
+  });
 };
-
-
-
-
 
 
 

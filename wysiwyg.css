@@ -5,8 +5,13 @@
 	background-color: lightblue;
 }
 .image{
-	width: 60%;
+	max-width: 20%;
+
 }
 .dotted{
 	border: 2px dotted red;
+}
+.bio{
+	font-size: 1.15em;
+	font-weight: 600;
 }
